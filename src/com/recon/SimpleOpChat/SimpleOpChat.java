@@ -111,9 +111,11 @@ public class SimpleOpChat extends JavaPlugin implements Listener
         if (sender instanceof Player) {
             pname = ((Player)sender).getDisplayName();
         }
-        Player[] onlinePlayers;
-        for (int length = (onlinePlayers = (Player[])this.getServer().getOnlinePlayers().toArray()).length, i = 0; i < length; ++i) {
-            final Player p = onlinePlayers[i];
+        Object[] onlinePlayers = this.getServer().getOnlinePlayers().toArray();
+        for (int length = onlinePlayers.length, i = 0; i < length; ++i) {
+            Player p = null;
+            if (onlinePlayers[i] instanceof Player)
+                p = (Player)onlinePlayers[i];
             if (this.canUseAdminChat(p)) {
                 p.sendMessage(String.valueOf(this.colorizeString(this.getConfig().getString("prefix"))) + " <" + ChatColor.RESET + pname + ChatColor.WHITE + "> " + msg);
             }

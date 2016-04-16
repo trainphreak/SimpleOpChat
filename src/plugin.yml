@@ -1,0 +1,9 @@
+name: SimpleOpChat
+main: com.recon.SimpleOpChat.SimpleOpChat
+version: 1.1
+author: recon88
+description: >
+             Talk with other admins in a private chat.
+commands:
+  a:
+    description: Chat Command.
